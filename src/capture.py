@@ -35,9 +35,9 @@ class shapeCapture :
   Description is TODO.
   """
 
-  def __init__(self, root, image_path):
+  def __init__(self, root, image_path) :
     self.root = root
-    self.root.title("Image Annotator")
+    self.root.title("shapeCapture app")
 
     # Load image
     self.image = Image.open(image_path)
@@ -54,8 +54,8 @@ class shapeCapture :
 
     # Bind events
     self.canvas.bind("<Button-1>", self.addPoint)
-    self.root.bind("<KeyPress-s>", self.exportShape)
-    self.root.bind("<KeyPress-c>", self.clearPoints)
+    self.root.bind("<s>", self.exportShape)
+    self.root.bind("<c>", self.clearPoints)
 
 
   # ---------------------------------------------------------------------------
@@ -67,13 +67,15 @@ class shapeCapture :
 
     # Draw dot
     r = 3
-    self.canvas.create_oval(x-r, y-r, x+r, y+r, fill="red", outline="red")
+    self.canvas.create_oval(x-r, y-r, x+r, y+r, fill = "red", outline = "red")
 
     # Draw line from last point to current
     if len(self.points) > 1:
       x0, y0 = self.points[-2]
       line = self.canvas.create_line(x0, y0, x, y, fill="blue", width=2)
       self.lines.append(line)
+
+    print(f"x = {x}, y = {y}")
 
 
 
