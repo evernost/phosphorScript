@@ -24,7 +24,7 @@ function myClick(src, event, hImg, param)
     u = x/param.size_x; 
     px = -1*(1-u) + u;
     v = y/param.size_y; 
-    py = -1*(1-v) + v;
+    py = -1*v + (1-v);
 
     fprintf('shape{end+1} = struct(''instr'', ''point'',  ''x'', %0.3f, ''y'', %0.3f);\n', px, py);
     
